@@ -4,6 +4,20 @@ from dataclasses import dataclass
 import os
 
 
+SEED_URLS = [
+    "https://www.gspace.com/",
+    "https://www.gspace.com/about",
+    "https://www.gspace.com/team",
+    "https://www.gspace.com/launch",
+    "https://www.gspace.com/satellites",
+    "https://www.gspace.com/career",
+    "https://www.gspace.com/stem",
+    "https://www.gspace.com/update",
+    "https://www.gspace.com/asmn",
+    "https://www.gspace.com/contact",
+]
+
+
 @dataclass(frozen=True)
 class Settings:
     """Application settings loaded from environment variables."""
