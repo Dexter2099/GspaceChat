@@ -34,23 +34,22 @@ BOILERPLATE_LINES = {
     "Send",
 }
 
-MOJIBAKE_REPLACEMENTS = {
-    "Â": "",
-    "â€‹": "",
-    "â€”": "—",
-}
-
-
 def _fix_mojibake(text: str) -> str:
-    for bad, good in MOJIBAKE_REPLACEMENTS.items():
-        text = text.replace(bad, good)
+    text = text.replace("â€‹", "")
+    text = text.replace("Â®", "®")
+    text = text.replace("Â©", "©")
+    text = text.replace("â€”", "—")
+    text = text.replace("Â", "")
     return text
 
 
 def _remove_boilerplate_lines(text: str) -> str:
     cleaned_lines: list[str] = []
     for line in text.splitlines():
-        if line.strip() in BOILERPLATE_LINES:
+        stripped_line = line.strip()
+        if not stripped_line:
+            continue
+        if stripped_line in BOILERPLATE_LINES:
             continue
         cleaned_lines.append(line)
     return "\n".join(cleaned_lines)
