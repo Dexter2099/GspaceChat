@@ -114,10 +114,6 @@ def generate_answer(question: str, top_k: int = 5) -> dict[str, Any]:
         answer = FALLBACK_ANSWER
         return {"answer": answer, "sources": [], "used_chunks": used_chunks}
 
-    if sources:
-        source_lines = ["Sources:"] + [f"- {item['url']}" for item in sources]
-        answer = f"{answer}\n\n" + "\n".join(source_lines)
-
     return {"answer": answer, "sources": sources, "used_chunks": used_chunks}
 
 
