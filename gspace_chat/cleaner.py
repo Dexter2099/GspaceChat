@@ -35,11 +35,9 @@ BOILERPLATE_LINES = {
 }
 
 MOJIBAKE_REPLACEMENTS = {
+    "Â": "",
     "â€‹": "",
     "â€”": "—",
-    "Â®": "®",
-    "Â©": "©",
-    "Â": "",
 }
 
 
@@ -65,12 +63,6 @@ def _normalize_whitespace_preserve_paragraphs(text: str) -> str:
     normalized_lines: list[str] = []
     for line in text.split("\n"):
         line = re.sub(r"[ \u00a0]+", " ", line).strip()
-
-        # Drop garbage-only lines left behind after mojibake/boilerplate cleanup.
-        if line and not re.search(r"[A-Za-z0-9À-ɏ]", line):
-            if len(line) <= 3:
-                continue
-
         normalized_lines.append(line)
 
     text = "\n".join(normalized_lines)
