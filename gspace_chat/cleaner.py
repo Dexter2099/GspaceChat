@@ -35,11 +35,20 @@ BOILERPLATE_LINES = {
 }
 
 def _fix_mojibake(text: str) -> str:
-    text = text.replace("â€‹", "")
+    """Fix common UTF-8 text decoded as Windows-1252."""
+    try:
+        text = text.encode("latin1").decode("utf-8")
+    except UnicodeError:
+        pass
+
     text = text.replace("Â®", "®")
     text = text.replace("Â©", "©")
     text = text.replace("â€”", "—")
+    text = text.replace("â€‹", "")
+    text = text.replace("â€‹".encode("utf-8").decode("cp1252"), "")
+    text = text.replace("\ufeff", "")
     text = text.replace("Â", "")
+    text = re.sub(r"â€‹+", "", text)
     return text
 
 
