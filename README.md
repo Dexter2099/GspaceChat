@@ -1,6 +1,7 @@
 # Gspace Chat
 
 A retrieval-augmented AI assistant that turns Gilmour Space’s public website into a searchable knowledge interface with grounded answers and source citations.
+<img width="2912" height="1346" alt="Screenshot 2026-05-18 122559" src="https://github.com/user-attachments/assets/f6206a39-ad76-4dad-9fef-7fdc870001f9" />
 
 ## 1. Project overview
 
